@@ -1,0 +1,20 @@
+class Solution {
+    public int maxProduct(int[] nums) {
+        int n = nums.length;
+        int maxProduct = nums[0];
+        int minProduct = nums[0];
+        int answer = nums[0];
+        for (int i = 1; i < n; i++) {
+            int previousMax = maxProduct;
+            int previousMin = minProduct;
+            int product1 = nums[i];
+            int product2 = nums[i] * previousMin;
+            int product3 = nums[i] * previousMax;
+            maxProduct = Math.max(product1, Math.max(product2, product3));
+            minProduct = Math.min(product1, Math.min(product2, product3));
+
+            answer = Math.max(answer, maxProduct);
+        }
+        return answer;
+    }
+}
